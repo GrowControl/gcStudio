@@ -1,4 +1,4 @@
-package growcontrol.studio;
+package com.growcontrol.studio;
 
 import com.growcontrol.common.gcCommonDefines;
 

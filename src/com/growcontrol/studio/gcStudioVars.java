@@ -1,11 +1,10 @@
-package growcontrol.studio;
+package com.growcontrol.studio;
 
+import com.growcontrol.studio.configs.gcStudioConfig;
 import com.poixson.commonapp.config.xConfigLoader;
 import com.poixson.commonjava.Failure;
 import com.poixson.commonjava.Utils.Keeper;
 import com.poixson.commonjava.xLogger.xLog;
-
-import growcontrol.studio.configs.gcStudioConfig;
 
 
 public class gcStudioVars {

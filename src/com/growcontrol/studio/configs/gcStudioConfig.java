@@ -1,4 +1,4 @@
-package growcontrol.studio.configs;
+package com.growcontrol.studio.configs;
 
 import java.util.Map;
 import java.util.Set;
