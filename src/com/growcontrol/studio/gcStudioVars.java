@@ -61,4 +61,61 @@ public class gcStudioVars {
 
 
 
+	// profiles
+	public static ProfilesConfig getProfilesConfig() {
+		if(profilesConfig == null) {
+			synchronized(configLock) {
+				if(profilesConfig == null) {
+					profilesConfig = (ProfilesConfig) xConfigLoader.Load(
+							apiClientDefines.PROFILES_FILE,
+							ProfilesConfig.class,
+							gcStudio.class
+					);
+					if(profilesConfig == null) {
+						Failure.fail("Failed to load "+apiClientDefines.PROFILES_FILE);
+						return null;
+					}
+					if(profilesConfig.isFromResource())
+						xLog.getRoot(gcStudioConfig.LOG_NAME)
+							.warning("Created default "+apiClientDefines.PROFILES_FILE);
+				}
+			}
+		}
+		return profilesConfig;
+	}
+
+
+
+//	// connect state
+//	private static volatile ConnectState connectState = ConnectState.CLOSED;
+//	private static volatile ConnectState connectLast  = null;
+//	public static ConnectState getConnectState() {
+//		if(connectState == null)
+//			return ConnectState.CLOSED;
+//		return connectState;
+//	}
+//	public static ConnectState getLastConnectState() {
+//		return connectLast;
+//	}
+//	public static boolean setConnectState(final ConnectState expected, final ConnectState state) {
+//		if(state == null) throw new NullPointerException("connectState argument is required!");
+//		if(expected == null || expected.equals(connectState)) {
+//			synchronized(connectState) {
+//				if(expected == null || expected.equals(connectState)) {
+//					connectLast = connectState;
+//					connectState = state;
+//					// do change
+////					doChangedState(connectState, connectLast);
+//					final guiManager manager = guiManager.get();
+//					manager.updateConnectState(connectState, connectLast);
+//					return true;
+//				}
+//			}
+//		}
+//		return false;
+//	}
+////	protected abstract void doChangedState(State lastState);
+
+
+
 }
