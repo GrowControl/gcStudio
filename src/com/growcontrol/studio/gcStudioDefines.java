@@ -11,6 +11,8 @@ public final class gcStudioDefines {
 	// logger name
 	public static final String LOG_NAME = gcCommonDefines.LOG_NAME_CLIENT;
 
+	public static final String WINDOW_TITLE = "gcStudio";
+
 
 
 	// defaults

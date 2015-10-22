@@ -1,5 +1,7 @@
 package com.growcontrol.studio;
 
+import com.growcontrol.api.clientapi.apiClientDefines;
+import com.growcontrol.api.clientapi.configs.ProfilesConfig;
 import com.growcontrol.studio.configs.gcStudioConfig;
 import com.poixson.commonapp.config.xConfigLoader;
 import com.poixson.commonjava.Failure;
@@ -9,17 +11,25 @@ import com.poixson.commonjava.xLogger.xLog;
 
 public class gcStudioVars {
 
-	private static volatile boolean inited = false;
+	private static volatile gcStudioVars instance = null;
+	private static final Object lock = new Object();
 
 	// studio config
 	private static volatile gcStudioConfig config = null;
 	private static final Object configLock = new Object();
+	private static ProfilesConfig profilesConfig = null;
 
 
 
 	public static void init() {
-		if(!inited)
-			Keeper.add(new gcStudioVars());
+		if(instance == null) {
+			synchronized (lock) {
+				if(instance == null) {
+					instance = new gcStudioVars();
+					Keeper.add(instance);
+				}
+			}
+		}
 	}
 	private gcStudioVars() {
 	}
