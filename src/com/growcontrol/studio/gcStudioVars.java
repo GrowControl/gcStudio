@@ -42,6 +42,8 @@ public class gcStudioVars {
 			synchronized(configLock) {
 				if(config == null) {
 					config = (gcStudioConfig) xConfigLoader.Load(
+							xLog.getRoot(),
+							null,
 							gcStudioDefines.CONFIG_FILE,
 							gcStudioConfig.class,
 							gcStudio.class
@@ -67,6 +69,8 @@ public class gcStudioVars {
 			synchronized(configLock) {
 				if(profilesConfig == null) {
 					profilesConfig = (ProfilesConfig) xConfigLoader.Load(
+							xLog.getRoot(),
+							null,
 							apiClientDefines.PROFILES_FILE,
 							ProfilesConfig.class,
 							gcStudio.class
