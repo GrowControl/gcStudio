@@ -5,7 +5,6 @@ import com.growcontrol.studio.guiManager;
 import com.poixson.commonapp.gui.guiUtils;
 import com.poixson.commonapp.gui.xWindow;
 import com.poixson.commonapp.gui.annotations.xWindowProperties;
-import com.poixson.commonjava.xVars;
 
 
 @xWindowProperties(
@@ -13,13 +12,13 @@ import com.poixson.commonjava.xVars;
 )
 public class WindowDash extends xWindow {
 	private static final long serialVersionUID = 1L;
-	private final boolean DEBUG;
+//	private final boolean DEBUG;
 
 
 
 	public WindowDash() {
 		super();
-		this.DEBUG = xVars.debug();
+//		this.DEBUG = xVars.debug();
 		this.setTitle(gcStudioDefines.WINDOW_TITLE);
 		// resize and prepare
 
