@@ -32,6 +32,7 @@ import com.growcontrol.api.clientapi.configs.SavedProfile;
 import com.growcontrol.common.gcCommonDefines;
 import com.growcontrol.studio.gcStudioVars;
 import com.growcontrol.studio.guiManager;
+import com.poixson.commonapp.config.xConfigException;
 import com.poixson.commonapp.gui.guiUtils;
 import com.poixson.commonapp.gui.xFont;
 import com.poixson.commonapp.gui.xWindow;
@@ -402,7 +403,12 @@ public class WindowLogin extends xWindow {
 	public void loadProfilesConfig() {
 		if(guiUtils.forceDispatchThread(this, "loadProfilesConfig")) return;
 		final ProfilesConfig profilesConfig = gcStudioVars.getProfilesConfig();
-		final Map<String, SavedProfile> profiles = profilesConfig.getProfiles();
+		final Map<String, SavedProfile> profiles;
+		try {
+			profiles = profilesConfig.getProfiles();
+		} catch (xConfigException e) {
+			throw new RuntimeException("Failed to load profiles from config!", e);
+		}
 		// populate dropdown list
 //		this.lstProfiles.addItem(gcClientDefines.PROFILE_NEW);
 //		this.lstProfiles.addItem(SAVEDSERVERS_Unsaved);

@@ -1,71 +1,60 @@
 package com.growcontrol.studio.configs;
 
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import com.growcontrol.api.clientapi.apiClientDefines;
 import com.growcontrol.api.clientapi.configs.WindowConfig;
-import com.growcontrol.common.gcCommonDefines;
+import com.growcontrol.common.configs.gcAppConfig;
 import com.poixson.commonapp.config.xConfig;
-import com.poixson.commonjava.Utils.utils;
-import com.poixson.commonjava.xLogger.xLevel;
+import com.poixson.commonapp.config.xConfigException;
 
 
-public class gcStudioConfig extends xConfig {
-	public static final String LOG_NAME = "CONFIG";
+public class gcStudioConfig extends gcAppConfig {
 
 	private volatile Map<String, WindowConfig> windowConfigs = null;
+	private final Object windowsLock = new Object();
 
 
 
-	public gcStudioConfig(final Map<String, Object> datamap) {
+	public gcStudioConfig(final Map<String, Object> datamap)
+			throws xConfigException {
 		super(datamap);
 	}
 
 
 
-	// version
-	public String getVersion() {
-		final String value = this.getString(gcCommonDefines.CONFIG_VERSION);
-		if(utils.isEmpty(value))
-			return null;
-		return value;
-	}
-
-
-
-	// log level
-	public xLevel getLogLevel() {
-		final String value = this.getString(gcCommonDefines.CONFIG_LOG_LEVEL);
-		if(utils.isEmpty(value))
-			return null;
-		return xLevel.parse(value);
-	}
-
-
-
-	// debug
-	public Boolean getDebug() {
-		return this.getBoolean(gcCommonDefines.CONFIG_DEBUG);
-	}
-
-
-
 	// window configs
-	public Map<String, WindowConfig> getWindowConfigs() {
+	public Map<String, WindowConfig> getWindowConfigs()
+			throws xConfigException {
 		if(this.windowConfigs == null) {
-			final Set<Object> dataset = this.getSet(
-					Object.class,
-					apiClientDefines.CONFIG_WINDOWS
-			);
-			this.windowConfigs = WindowConfig.get(dataset);
+			synchronized(this.windowsLock) {
+				if(this.windowConfigs == null) {
+					final List<xConfig> configsList =
+						this.getConfigList(
+								apiClientDefines.CONFIG_WINDOWS,
+								WindowConfig.class
+					);
+					final LinkedHashMap<String, WindowConfig> windowsMap =
+							new LinkedHashMap<String, WindowConfig>();
+					for(final xConfig cfg : configsList) {
+						final WindowConfig w = (WindowConfig) cfg;
+						windowsMap.put(w.getKey(), w);
+					}
+					this.windowConfigs = Collections.unmodifiableMap(windowsMap);
+				}
+			}
 		}
 		return this.windowConfigs;
 	}
 	public WindowConfig getWindowConfig(final String name) {
-		if(this.windowConfigs == null)
-			this.getWindowConfigs();
-		return this.windowConfigs.get(name);
+		try {
+			final Map<String, WindowConfig> windowConfigs = this.getWindowConfigs();
+			return windowConfigs.get(name);
+		} catch (xConfigException ignore) {}
+		return null;
 	}
 
 
