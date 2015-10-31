@@ -14,47 +14,38 @@ import com.poixson.commonapp.config.xConfigException;
 
 public class gcStudioConfig extends gcAppConfig {
 
-	private volatile Map<String, WindowConfig> windowConfigs = null;
-	private final Object windowsLock = new Object();
+	private final Map<String, WindowConfig> windowConfigs;
 
 
 
 	public gcStudioConfig(final Map<String, Object> datamap)
 			throws xConfigException {
 		super(datamap);
+		this.windowConfigs = this.loadWindowConfigs();
+	}
+	private Map<String, WindowConfig> loadWindowConfigs()
+			throws xConfigException {
+		final List<xConfig> configsList = this.getConfigList(
+				apiClientDefines.CONFIG_WINDOWS,
+				WindowConfig.class
+		);
+		final LinkedHashMap<String, WindowConfig> windowsMap =
+				new LinkedHashMap<String, WindowConfig>();
+		for(final xConfig cfg : configsList) {
+			final WindowConfig w = (WindowConfig) cfg;
+			windowsMap.put(w.getKey(), w);
+		}
+		return Collections.unmodifiableMap(windowsMap);
 	}
 
 
 
 	// window configs
-	public Map<String, WindowConfig> getWindowConfigs()
-			throws xConfigException {
-		if(this.windowConfigs == null) {
-			synchronized(this.windowsLock) {
-				if(this.windowConfigs == null) {
-					final List<xConfig> configsList =
-						this.getConfigList(
-								apiClientDefines.CONFIG_WINDOWS,
-								WindowConfig.class
-					);
-					final LinkedHashMap<String, WindowConfig> windowsMap =
-							new LinkedHashMap<String, WindowConfig>();
-					for(final xConfig cfg : configsList) {
-						final WindowConfig w = (WindowConfig) cfg;
-						windowsMap.put(w.getKey(), w);
-					}
-					this.windowConfigs = Collections.unmodifiableMap(windowsMap);
-				}
-			}
-		}
+	public Map<String, WindowConfig> getWindowConfigs() {
 		return this.windowConfigs;
 	}
 	public WindowConfig getWindowConfig(final String name) {
-		try {
-			final Map<String, WindowConfig> windowConfigs = this.getWindowConfigs();
-			return windowConfigs.get(name);
-		} catch (xConfigException ignore) {}
-		return null;
+		return this.windowConfigs.get(name);
 	}
 
 
