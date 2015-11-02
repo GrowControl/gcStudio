@@ -113,7 +113,7 @@ public class gcStudioVars {
 //		return connectLast;
 //	}
 //	public static boolean setConnectState(final ConnectState expected, final ConnectState state) {
-//		if(state == null) throw new NullPointerException("connectState argument is required!");
+//		if(state == null) throw new RequiredArgumentException("connectState");
 //		if(expected == null || expected.equals(connectState)) {
 //			synchronized(connectState) {
 //				if(expected == null || expected.equals(connectState)) {

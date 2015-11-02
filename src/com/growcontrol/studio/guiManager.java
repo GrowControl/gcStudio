@@ -5,6 +5,7 @@ import com.growcontrol.studio.windows.WindowLogin;
 import com.poixson.commonapp.gui.guiUtils;
 import com.poixson.commonjava.Utils.Keeper;
 import com.poixson.commonjava.Utils.utils;
+import com.poixson.commonjava.Utils.exceptions.RequiredArgumentException;
 import com.poixson.commonjava.xLogger.xLog;
 
 
@@ -53,7 +54,7 @@ public class guiManager {
 
 	// show window
 	public void Show(final GUI_MODE mode) {
-		if(mode == null) throw new NullPointerException("mode argument is required!");
+		if(guiMode == null) throw new RequiredArgumentException("mode");
 		// run in event dispatch thread
 		if(guiUtils.forceDispatchThread(this, "Show", mode)) return;
 		switch(mode) {

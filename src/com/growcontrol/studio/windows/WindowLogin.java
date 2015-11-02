@@ -43,6 +43,7 @@ import com.poixson.commonapp.gui.remapped.RemappedItemListener;
 import com.poixson.commonjava.xVars;
 import com.poixson.commonjava.Utils.utils;
 import com.poixson.commonjava.Utils.utilsNumbers;
+import com.poixson.commonjava.Utils.exceptions.RequiredArgumentException;
 import com.poixson.commonjava.xLogger.xLog;
 
 
@@ -365,7 +366,7 @@ public class WindowLogin extends xWindow {
 	 * @thread-safe
 	 */
 	public void Update(final String state) {
-		if(utils.isEmpty(state)) throw new NullPointerException("state argument is required!");
+		if(utils.isEmpty(state)) throw new RequiredArgumentException("state");
 		if(guiUtils.forceDispatchThread(this, "ShowCard", state)) return;
 		switch(state.toLowerCase()) {
 		case "login":
@@ -419,7 +420,7 @@ public class WindowLogin extends xWindow {
 
 
 	public static String FormatProfile(final SavedProfile profile) {
-		if(profile == null) throw new NullPointerException("profile argument is required!");
+		if(profile == null) throw new RequiredArgumentException("profile");
 		final StringBuilder str = new StringBuilder();
 		// profile name
 		str.append(profile.name);
