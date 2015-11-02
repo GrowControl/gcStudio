@@ -19,8 +19,8 @@ public class guiManager {
 		LOGIN,
 		DASH
 	}
-	protected volatile GUI_MODE mode = null;
-	protected volatile GUI_MODE last = null;
+	protected volatile GUI_MODE guiMode = null;
+	protected volatile GUI_MODE guiLast = null;
 
 	// window instances
 	protected volatile WindowLogin windowLogin = null;
@@ -53,11 +53,11 @@ public class guiManager {
 
 
 	// show window
-	public void Show(final GUI_MODE mode) {
+	public void Show(final GUI_MODE guiMode) {
 		if(guiMode == null) throw new RequiredArgumentException("mode");
 		// run in event dispatch thread
-		if(guiUtils.forceDispatchThread(this, "Show", mode)) return;
-		switch(mode) {
+		if(guiUtils.forceDispatchThread(this, "Show", guiMode)) return;
+		switch(guiMode) {
 		// login window
 		case LOGIN: {
 			if(this.windowLogin == null)
@@ -73,10 +73,10 @@ public class guiManager {
 		}
 		}
 		// mode has changed
-		if(!mode.equals(this.mode)) {
-			xLog.getRoot("GUI").info("Displaying mode: "+mode.toString());
-			this.last = this.mode;
-			this.mode = mode;
+		if(!guiMode.equals(this.guiMode)) {
+			xLog.getRoot("GUI").info("Displaying mode: "+guiMode.toString());
+			this.guiLast = this.guiMode;
+			this.guiMode = guiMode;
 		}
 	}
 
