@@ -423,8 +423,8 @@ public class WindowLogin extends xWindow {
 		if(profile == null) throw new RequiredArgumentException("profile");
 		final StringBuilder str = new StringBuilder();
 		// profile name
-		str.append(profile.name);
-		if(apiClientDefines.PROFILE_HOST_INTERNAL.equalsIgnoreCase(profile.host)) {
+		str.append(profile.getName());
+		if(apiClientDefines.PROFILE_HOST_INTERNAL.equalsIgnoreCase(profile.getHost())) {
 			str.append(" ").append(apiClientDefines.PROFILE_HOST_INTERNAL);
 			return str.toString();
 		}
@@ -433,16 +433,16 @@ public class WindowLogin extends xWindow {
 		final boolean ssl = false;
 		// host
 		str.append("  ( ");
-		if(utils.isEmpty(profile.host))
+		if(utils.isEmpty(profile.getHost()))
 			str.append("");
 		else
-		if("localhost".equalsIgnoreCase(profile.host))
+		if("localhost".equalsIgnoreCase(profile.getHost()))
 			str.append("localhost");
 		else
-			str.append(profile.host);
+			str.append(profile.getHost());
 		// port
-		if(profile.port != gcCommonDefines.DEFAULT_SOCKET_PORT(ssl))
-			str.append(":").append(profile.port);
+		if(profile.getPort() != gcCommonDefines.DEFAULT_SOCKET_PORT(ssl))
+			str.append(":").append(profile.getPort());
 		str.append(" )");
 		return str.toString();
 	}
@@ -459,11 +459,11 @@ public class WindowLogin extends xWindow {
 			String pass = "";
 			final SavedProfile profile = this.profiles.get(selected);
 			if(profile != null) {
-				log().fine("Selected profile: "+profile.name);
-				host = profile.host;
-				port = Integer.toString(profile.port);
-				user = profile.user;
-				pass = profile.pass;
+				log().fine("Selected profile: "+profile.getName());
+				host = profile.getHost();
+				port = Integer.toString(profile.getPort());
+				user = profile.getUser();
+				pass = profile.getPass();
 			}
 			// internal
 			if(apiClientDefines.PROFILE_HOST_INTERNAL.equalsIgnoreCase(host)) {
