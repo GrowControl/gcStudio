@@ -1,0 +1,25 @@
+{
+	"Name": "gcStudio",
+	"ArtifactId": "gcstudio",
+	"GroupId": "com.growcontrol.client",
+	"Version": "3.6.1",
+	"URL": "http://growcontrol.com",
+	"Github-Path": "GrowControl/GrowControl",
+	"Org-Name": "GrowControl",
+	"Main-Class": "com.growcontrol.client.studio.Main",
+	"Shade": "yes",
+	"Deps": {
+		"pxncommon": {
+			"GroupId": "com.poixson",
+			"ArtifactId": "pxncommon",
+			"Name": "pxnCommon",
+			"Version": "${project.version}",
+			"Scope": "provided"
+		},
+		"gcclient": {
+			"GroupId": "com.growcontrol",
+			"ArtifactId": "client",
+			"Version": "${project.version}"
+		}
+	}
+}
