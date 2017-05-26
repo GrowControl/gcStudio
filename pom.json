@@ -20,7 +20,8 @@
 			"GroupId": "com.growcontrol",
 			"ArtifactId": "server",
 			"Name": "gcServer",
-			"Version": "${project.version}"
+			"Version": "${project.version}",
+			"Scope": "provided"
 		},
 		"gcClient": {
 			"GroupId": "com.growcontrol",
