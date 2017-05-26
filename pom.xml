@@ -1,11 +1,11 @@
-<!-- Generated on: May 26, 2017 17:47 UTC -->
+<!-- Generated on: May 26, 2017 18:20 UTC -->
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
                              http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<name>gcStudio</name>
-	<artifactId>gcstudio</artifactId>
+	<artifactId>studio</artifactId>
 	<groupId>com.growcontrol.client</groupId>
 	<version>3.6.1</version>
 	<packaging>jar</packaging>
@@ -30,7 +30,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-		<pxncommon-version>${project.version}</pxncommon-version>
+		<pxnCommon-version>${project.version}</pxnCommon-version>
 		<gcclient-version>${project.version}</gcclient-version>
 
 		<git-commit-id-plugin-version>2.2.2</git-commit-id-plugin-version>
@@ -162,8 +162,8 @@
 
 		<dependency>
 			<groupId>com.poixson</groupId>
-			<artifactId>pxncommon</artifactId>
-			<version>${pxncommon-version}</version>
+			<artifactId>common</artifactId>
+			<version>${pxnCommon-version}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
