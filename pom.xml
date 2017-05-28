@@ -11,9 +11,9 @@
 	<packaging>jar</packaging>
 	<url>http://growcontrol.com</url>
 	<scm>
-		<url>https://github.com/GrowControl/GrowControl</url>
-		<connection>scm:git:https://github.com/GrowControl/GrowControl.git</connection>
-		<developerConnection>scm:git:git@github.com:GrowControl/GrowControl.git</developerConnection>
+		<url>https://github.com/GrowControl/gcStudio</url>
+		<connection>scm:git:https://github.com/GrowControl/gcStudio.git</connection>
+		<developerConnection>scm:git:git@github.com:GrowControl/gcStudio.git</developerConnection>
 	</scm>
 	<ciManagement>
 		<url>ci.poixson.com</url>
@@ -24,7 +24,7 @@
 		<url>http://growcontrol.com</url>
 	</organization>
 	<issueManagement>
-		<url>https://github.com/GrowControl/GrowControl/issues</url>
+		<url>https://github.com/GrowControl/gcStudio/issues</url>
 		<system>github</system>
 	</issueManagement>
 	<properties>
