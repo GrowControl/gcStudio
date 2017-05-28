@@ -6,7 +6,6 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.fusesource.jansi.AnsiConsole;
 
 import com.growcontrol.studio.guiManager.GUI_MODE;
 import com.poixson.commonapp.app.xApp;
@@ -298,21 +297,24 @@ public class gcStudio extends xApp {
 
 
 
+	// ------------------------------------------------------------------------------- //
+
+
+
 	// ascii header
 	@Override
 	protected void displayLogo() {
 		// colors
 		final String COLOR_BG = "black";
-		final String COLOR_POIXSON_P   = "bold,green";
-		final String COLOR_POIXSON_OI  = "bold,blue";
-		final String COLOR_POIXSON_X   = "bold,green";
-		final String COLOR_POIXSON_SON = "bold,blue";
-		final String COLOR_COPY        = "bold,black";
-		final String COLOR_GROW        = "bold,green";
-		final String COLOR_CONTROL     = "bold,white";
-		final String COLOR_SOFTWARE    = "cyan";
-		final String COLOR_VERSION     = "cyan";
-		final String COLOR_GRASS       = "green";
+		final String COLOR_PXN_P    = "bold,green";
+		final String COLOR_PXN_OI   = "bold,blue";
+		final String COLOR_PXN_X    = "bold,green";
+		final String COLOR_PXN_SON  = "bold,blue";
+		final String COLOR_GROW     = "bold,green";
+		final String COLOR_CONTROL  = "bold,white";
+		final String COLOR_SOFTWARE = "cyan";
+		final String COLOR_VERSION  = "cyan";
+		final String COLOR_GRASS    = "green";
 		final String COLOR_FLOWER_STEM     = "green";
 		final String COLOR_FLOWER_A_PEDALS = "blue";
 		final String COLOR_FLOWER_A_CENTER = "bold,blue";
@@ -332,13 +334,12 @@ public class gcStudio extends xApp {
 		final String COLOR_FLOWER_H_CENTER = "bold,white";
 		// line 1
 		final Map<Integer, String> colors1 = new LinkedHashMap<Integer, String>();
-		colors1.put(new Integer(7),  COLOR_POIXSON_P);
-		colors1.put(new Integer(8),  COLOR_POIXSON_OI);
-		colors1.put(new Integer(10), COLOR_POIXSON_X);
-		colors1.put(new Integer(11), COLOR_POIXSON_SON);
+		colors1.put(new Integer(7),  COLOR_PXN_P);
+		colors1.put(new Integer(8),  COLOR_PXN_OI);
+		colors1.put(new Integer(10), COLOR_PXN_X);
+		colors1.put(new Integer(11), COLOR_PXN_SON);
 		// line 2
 		final Map<Integer, String> colors2 = new LinkedHashMap<Integer, String>();
-		colors2.put(new Integer(4),  COLOR_COPY);
 		colors2.put(new Integer(5),  COLOR_GROW);
 		colors2.put(new Integer(9),  COLOR_CONTROL);
 		colors2.put(new Integer(19), COLOR_FLOWER_C_PEDALS);
@@ -429,9 +430,14 @@ public class gcStudio extends xApp {
 		// line 11
 		final Map<Integer, String> colors11 = new LinkedHashMap<Integer, String>();
 		colors11.put(new Integer(1), COLOR_GRASS);
-		// build art
-		final String version = utilsString.padCenter(10, this.mvnprops.version, ' ');
-		final PrintStream out = AnsiConsole.out;
+
+		// build lines
+		final String version = StringUtils.padCenter(10, this.getVersion(), ' ');
+		final PrintStream out =
+			new xLogPrintStream(
+				xLog.getRoot(),
+				null
+			);
 		out.println();
 		DisplayLineColors(out, COLOR_BG, colors1, "      PoiXson                                                    "          );
 		DisplayLineColors(out, COLOR_BG, colors2, "    GROWCONTROL   _ _        ,`--',                     \" ' \"    "        );
@@ -456,7 +462,7 @@ public class gcStudio extends xApp {
 
 //   |     A      B      C     D     E         F      G         H      |
 // 1 |      PoiXson                                                    |
-// 2 |   ©GROWCONTROL   _ _        ,`--',                     " ' "    |
+// 2 |    GROWCONTROL   _ _        ,`--',                     " ' "    |
 // 3 |   _  Studio     (_\_)      . _\/_ .                  " \ | / "  |
 // 4 | _(_)_<version->(__<_{)     `. /\ .'   .\|/.         ' --(:)-- ' |
 // 5 |(_)@(_)          {_/_}        "||"     -(:)-          " / | \ "  |
