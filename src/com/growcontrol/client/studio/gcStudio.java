@@ -302,6 +302,7 @@ public class gcStudio extends xApp {
 	@Override
 	protected void displayLogo() {
 		// colors
+		final String COLOR_BG = "black";
 		final String COLOR_POIXSON_P   = "bold,green";
 		final String COLOR_POIXSON_OI  = "bold,blue";
 		final String COLOR_POIXSON_X   = "bold,green";
@@ -432,17 +433,17 @@ public class gcStudio extends xApp {
 		final String version = utilsString.padCenter(10, this.mvnprops.version, ' ');
 		final PrintStream out = AnsiConsole.out;
 		out.println();
-		this.displayLogoLine(out, colors1, "      PoiXson                                                    "          );
-		this.displayLogoLine(out, colors2, "   ©GROWCONTROL   _ _        ,`--',                     \" ' \"    "        );
-		this.displayLogoLine(out, colors3, "   _  Studio     (_\\_)      . _\\/_ .                  \" \\ | / \"  "     );
-		this.displayLogoLine(out, colors4, " _(_)_"+version+"(__<_{)     `. /\\ .'   .\\|/.         ' --(:)-- ' "       );
-		this.displayLogoLine(out, colors5, "(_)@(_)          {_/_}        \"||\"     -(:)-          \" / | \\ \"  "     );
-		this.displayLogoLine(out, colors6, "  (_)\\.         |\\ |           || /\\   \"/|\\\"           \" '|' \"   "  );
-		this.displayLogoLine(out, colors7, "    . |/| .vVv.  \\\\| /| \\V/  /\\||//\\)   '|'    `@'   |\\   |      "    );
-		this.displayLogoLine(out, colors8, "    |\\|/   \\#/    \\|//  `|/ (/\\||/    .\\ | ,   \\|/   /_ \\ |  /`| "   );
-		this.displayLogoLine(out, colors9, "     \\|   \\\\|//    |/  \\\\|//   ||     /-\\|/_\\ \\\\|//,   /-\\|/_//  ");
-		this.displayLogoLine(out, colors10,"^/^/^/^/^/^/^/^/^/^/^/^/^/^/^/^/^/^/^/^/^/^/^/^/^/^/^/^/^/^/^/^/^"            );
-		this.displayLogoLine(out, colors11,"/////////////////////////////////////////////////////////////////"            );
+		DisplayLineColors(out, COLOR_BG, colors1, "      PoiXson                                                    "          );
+		DisplayLineColors(out, COLOR_BG, colors2, "    GROWCONTROL   _ _        ,`--',                     \" ' \"    "        );
+		DisplayLineColors(out, COLOR_BG, colors3, "   _  gcStudio   (_\\_)      . _\\/_ .                  \" \\ | / \"  "     );
+		DisplayLineColors(out, COLOR_BG, colors4, " _(_)_"+version+"(__<_{)     `. /\\ .'   .\\|/.         ' --(:)-- ' "       );
+		DisplayLineColors(out, COLOR_BG, colors5, "(_)@(_)          {_/_}        \"||\"     -(:)-          \" / | \\ \"  "     );
+		DisplayLineColors(out, COLOR_BG, colors6, "  (_)\\.         |\\ |           || /\\   \"/|\\\"           \" '|' \"   "  );
+		DisplayLineColors(out, COLOR_BG, colors7, "    . |/| .vVv.  \\\\| /| \\V/  /\\||//\\)   '|'    `@'   |\\   |      "    );
+		DisplayLineColors(out, COLOR_BG, colors8, "    |\\|/   \\#/    \\|//  `|/ (/\\||/    .\\ | ,   \\|/   /_ \\ |  /`| "   );
+		DisplayLineColors(out, COLOR_BG, colors9, "     \\|   \\\\|//    |/  \\\\|//   ||     /-\\|/_\\ \\\\|//,   /-\\|/_//  ");
+		DisplayLineColors(out, COLOR_BG, colors10,"^/^/^/^/^/^/^/^/^/^/^/^/^/^/^/^/^/^/^/^/^/^/^/^/^/^/^/^/^/^/^/^/^"          );
+		DisplayLineColors(out, COLOR_BG, colors11,"/////////////////////////////////////////////////////////////////"          );
 		out.println();
 		out.println(" Copyright (C) 2007-2015 PoiXson, Mattsoft");
 		out.println(" - Brainchild of the one known as lorenzo -");
