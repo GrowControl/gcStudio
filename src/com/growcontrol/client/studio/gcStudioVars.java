@@ -1,5 +1,6 @@
 package com.growcontrol.studio;
 
+import com.poixson.utils.Keeper;
 import com.growcontrol.api.clientapi.apiClientDefines;
 import com.growcontrol.api.clientapi.configs.ProfilesConfig;
 import com.growcontrol.studio.configs.gcStudioConfig;
@@ -11,6 +12,8 @@ import com.poixson.commonjava.xLogger.xLog;
 
 
 public class gcStudioVars {
+	private gcStudioVars() {}
+	{ Keeper.add(new gcStudioVars()); }
 
 	private static volatile gcStudioVars instance = null;
 	private static final Object lock = new Object();
@@ -22,18 +25,6 @@ public class gcStudioVars {
 
 
 
-	public static void init() {
-		if(instance == null) {
-			synchronized (lock) {
-				if(instance == null) {
-					instance = new gcStudioVars();
-					Keeper.add(instance);
-				}
-			}
-		}
-	}
-	private gcStudioVars() {
-	}
 
 
 

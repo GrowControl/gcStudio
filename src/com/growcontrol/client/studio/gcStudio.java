@@ -38,7 +38,6 @@ public class gcStudio extends xApp {
 	}
 	public gcStudio() {
 		super();
-		gcStudioVars.init();
 		if(xVars.debug())
 			this.displayColors();
 		this.displayLogo();

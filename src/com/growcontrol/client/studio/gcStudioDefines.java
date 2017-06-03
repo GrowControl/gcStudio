@@ -1,10 +1,12 @@
 package com.growcontrol.studio;
 
+import com.poixson.utils.Keeper;
 import com.growcontrol.common.gcCommonDefines;
 
 
 public final class gcStudioDefines {
 	private gcStudioDefines() {}
+	{ Keeper.add(new gcStudioDefines()); }
 
 
 
