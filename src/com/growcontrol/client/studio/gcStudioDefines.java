@@ -1,7 +1,6 @@
-package com.growcontrol.studio;
+package com.growcontrol.client.studio;
 
 import com.poixson.utils.Keeper;
-import com.growcontrol.common.gcCommonDefines;
 
 
 public final class gcStudioDefines {
@@ -10,19 +9,15 @@ public final class gcStudioDefines {
 
 
 
-	// logger name
-	public static final String LOG_NAME = gcCommonDefines.LOG_NAME_CLIENT;
+//	// logger name
+//	public static final String LOG_NAME = gcCommonDefines.LOG_NAME_CLIENT;
 
-	public static final String WINDOW_TITLE = "gcStudio";
+//	public static final String WINDOW_TITLE = "gcStudio";
 
+//	// defaults
 
-
-	// defaults
-
-
-
-	// studio config
-	public static final String CONFIG_FILE = "studio.yml";
+//	// studio config
+//	public static final String CONFIG_FILE = "studio.yml";
 
 
 

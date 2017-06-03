@@ -1,3 +1,4 @@
+/*
 package com.growcontrol.studio.windows;
 
 import java.awt.BorderLayout;
@@ -360,11 +361,11 @@ public class WindowLogin extends xWindow {
 
 
 
-	/**
+	/ **
 	 * Displays a card in the login window.
 	 * @param card Card name to display.
 	 * @thread-safe
-	 */
+	 * /
 	public void Update(final String state) {
 		if(utils.isEmpty(state)) throw new RequiredArgumentException("state");
 		if(guiUtils.forceDispatchThread(this, "ShowCard", state)) return;
@@ -593,3 +594,4 @@ xLog.getRoot().title("STARTING SERVER");
 
 
 }
+*/
